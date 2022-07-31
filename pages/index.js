@@ -1,12 +1,9 @@
-import { Button } from "@mui/material";
 import { Box } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { doc, getDocs, setDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import Chart from "../components/Chart";
-import Filter from "../components/Filter";
-import { DataProvider, db, getAllData, useData } from "../lib/firebase";
+import Filter from "../components/Filter/Filter";
+import { DataProvider, useData } from "../contexts/DataContext";
+import FilterProvider from "../contexts/FilterContext";
 
 /** @type {import("next").GetStaticProps} */
 export async function getStaticProps() {
@@ -44,8 +41,11 @@ export default function Home({ rawData, error }) {
   return (
     <Box component="main" mt="5em">
       <DataProvider>
+        <FilterProvider>
+
         <Filter />
         <Chart />
+        </FilterProvider>
       </DataProvider>
     </Box>
   );
