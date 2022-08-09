@@ -17,7 +17,7 @@ export default function Home() {
         alignItems: "flex-start",
         width: "100%",
         justifyContent: "space-between",
-        backgroundColor:"rgb(250,250,250)"
+        backgroundColor: "rgb(250,250,250)",
       }}
     >
       <Box>
