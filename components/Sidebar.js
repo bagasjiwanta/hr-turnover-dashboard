@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "@mui/material/Toolbar";
 
-export const SIDEBAR_WIDTH = 240;
+export const SIDEBAR_WIDTH = 220;
 
 function ResponsiveDrawer(props) {
   const { window } = props;

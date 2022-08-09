@@ -11,6 +11,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SideBar from "../components/Sidebar";
 import TopBar from "../components/TopBar";
+import { DataProvider } from "../contexts/DataContext";
+import { FilterProvider } from "../contexts/FilterContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -23,9 +25,11 @@ function MyApp({ Component, pageProps }) {
       <Box sx={{ display: "flex" }}>
         <TopBar />
         <SideBar />
-        <Container>
-          <Component {...pageProps} />
-        </Container>
+        <DataProvider>
+          <FilterProvider>
+            <Component {...pageProps} />
+          </FilterProvider>
+        </DataProvider>
       </Box>
     </>
   );

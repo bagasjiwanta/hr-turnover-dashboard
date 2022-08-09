@@ -1,11 +1,20 @@
-import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from "@mui/material";
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+} from "@mui/material";
 
 export default function FilterCore({
   possibleValues,
   selected,
   setSelected,
-  width = 200,
+  width,
   label,
+  multiple = true,
 }) {
   const handleChange = (e) => {
     const {
@@ -13,7 +22,11 @@ export default function FilterCore({
     } = e;
     if (typeof value == "string") {
       if (value != "") {
-        setSelected(value.split(","));
+        if (multiple) {
+          setSelected(value.split(","));
+        } else {
+          setSelected(value);
+        }
       }
     } else {
       if (value.length != 0) {
@@ -21,21 +34,22 @@ export default function FilterCore({
       }
     }
   };
+
   return (
-    <FormControl sx={{ width: width }}>
+    <FormControl sx={width ? { width: width } : undefined}>
       <InputLabel id={`select-${label}-label`}>{label}</InputLabel>
       <Select
         id={`select-${label}`}
         labelId={`select-${label}-label`}
-        multiple
+        multiple={multiple}
         value={selected}
         onChange={handleChange}
         input={<OutlinedInput label={label} />}
-        renderValue={(selected) => selected.join(", ")}
+        renderValue={(selected) => (multiple ? selected.join(", ") : selected)}
       >
         {possibleValues.map((y) => (
           <MenuItem value={y} key={y}>
-            <Checkbox checked={selected.indexOf(y) > -1} />
+            {multiple ? <Checkbox checked={selected.indexOf(y) > -1} /> : null}
             <ListItemText primary={y} />
           </MenuItem>
         ))}

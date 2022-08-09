@@ -2,11 +2,11 @@ import { Stack, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat"
-import { EARLIEST_MONTH, LATEST_MONTH } from "../../lib/constants"
-import { useState, useEffect } from "react"
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import { EARLIEST_MONTH, LATEST_MONTH } from "../../utils/constants";
+import { useState, useEffect } from "react";
 
-export default function MonthRange({start, setStart, end, setEnd}) {
+export default function MonthRange({ start, setStart, end, setEnd }) {
   useEffect(() => {
     dayjs.extend(customParseFormat);
   }, []);
@@ -15,23 +15,23 @@ export default function MonthRange({start, setStart, end, setEnd}) {
   const [maxMonth, setMaxMonth] = useState(LATEST_MONTH);
 
   useEffect(() => {
-    if(start) {
+    if (start) {
       setMinMonth(start);
     } else {
-      setMinMonth(EARLIEST_MONTH)
+      setMinMonth(EARLIEST_MONTH);
     }
-  }, [start])
+  }, [start]);
 
   useEffect(() => {
-    if(end) {
+    if (end) {
       setMaxMonth(end);
     } else {
-      setMaxMonth(LATEST_MONTH)
+      setMaxMonth(LATEST_MONTH);
     }
-  }, [end])
+  }, [end]);
 
   return (
-    <Stack spacing={1} sx={{width:200}}>
+    <Stack direction="row" spacing={2}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           label="Dari"

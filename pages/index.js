@@ -1,52 +1,28 @@
-import { Box } from "@mui/material";
-import { useEffect } from "react";
-import Chart from "../components/Chart";
+import { Box, Button } from "@mui/material";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import Chart from "../components/Chart/Chart";
 import Filter from "../components/Filter/Filter";
-import { DataProvider, useData } from "../contexts/DataContext";
-import FilterProvider from "../contexts/FilterContext";
-
-/** @type {import("next").GetStaticProps} */
-export async function getStaticProps() {
-  try {
-    // const result = await getAllData();
-    const result = {};
-    return {
-      props: {
-        rawData: result,
-      },
-    };
-  } catch (err) {
-    return {
-      props: {
-        error: err.toString(),
-      },
-    };
-  }
-}
+import { db } from "../utils/firebase";
+import jsondata from "../contexts/data.json";
 
 /** @type {import("next").NextPage} */
-export default function Home({ rawData, error }) {
-  const { data, setData } = useData();
-  useEffect(() => {
-    if (!data) {
-      if (!error) {
-        setData(rawData);
-        console.log(rawData);
-      } else {
-        alert("Oops an error happened. Please try again later");
-        console.log(error);
-      }
-    }
-  }, []);
+export default function Home() {
   return (
-    <Box component="main" mt="5em">
-      <DataProvider>
-        <FilterProvider>
-
-        <Filter />
+    <Box
+      component="main"
+      mx="1em"
+      mt="5em"
+      sx={{
+        display: "flex",
+        alignItems: "flex-start",
+        width: "100%",
+        justifyContent: "space-between",
+      }}
+    >
+      <Box>
         <Chart />
-        </FilterProvider>
-      </DataProvider>
+      </Box>
+      <Filter />
     </Box>
   );
 }

@@ -1,0 +1,784 @@
+{
+  "outlet 1": {
+    "2021": {
+      "1": {
+        "awal": {
+          "staff": 123,
+          "dw": 76,
+          "trainee": 20
+        },
+        "leaver": {
+          "staff": 0,
+          "dw": 1,
+          "trainee": 2
+        },
+        "voluntary": {
+          "staff": 0,
+          "dw": 1,
+          "trainee": 2
+        },
+        "akhir": {
+          "staff": 123,
+          "dw": 75,
+          "trainee": 18
+        }
+      },
+      "2": {
+        "awal": {
+          "staff": 123,
+          "dw": 75,
+          "trainee": 18
+        },
+        "leaver": {
+          "staff": 0,
+          "dw": 3,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 0,
+          "dw": 3,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 126,
+          "dw": 74,
+          "trainee": 18
+        }
+      },
+      "3": {
+        "awal": {
+          "staff": 126,
+          "dw": 74,
+          "trainee": 33
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 1,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 1,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 129,
+          "dw": 76,
+          "trainee": 17
+        }
+      },
+      "4": {
+        "awal": {
+          "staff": 129,
+          "dw": 76,
+          "trainee": 17
+        },
+        "leaver": {
+          "staff": 10,
+          "dw": 3,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 7,
+          "dw": 2,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 119,
+          "dw": 74,
+          "trainee": 17
+        }
+      },
+      "5": {
+        "awal": {
+          "staff": 119,
+          "dw": 74,
+          "trainee": 17
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 1,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 1,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 119,
+          "dw": 74,
+          "trainee": 17
+        }
+      },
+      "6": {
+        "awal": {
+          "staff": 119,
+          "dw": 74,
+          "trainee": 17
+        },
+        "leaver": {
+          "staff": 9,
+          "dw": 3,
+          "trainee": 3
+        },
+        "voluntary": {
+          "staff": 8,
+          "dw": 3,
+          "trainee": 3
+        },
+        "akhir": {
+          "staff": 114,
+          "dw": 72,
+          "trainee": 14
+        }
+      },
+      "7": {
+        "awal": {
+          "staff": 112,
+          "dw": 72,
+          "trainee": 14
+        },
+        "leaver": {
+          "staff": 6,
+          "dw": 3,
+          "trainee": 2
+        },
+        "voluntary": {
+          "staff": 6,
+          "dw": 2,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 108,
+          "dw": 69,
+          "trainee": 14
+        }
+      },
+      "8": {
+        "awal": {
+          "staff": 108,
+          "dw": 69,
+          "trainee": 14
+        },
+        "leaver": {
+          "staff": 10,
+          "dw": 3,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 9,
+          "dw": 3,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 105,
+          "dw": 65,
+          "trainee": 12
+        }
+      },
+      "9": {
+        "awal": {
+          "staff": 105,
+          "dw": 65,
+          "trainee": 12
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 3,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 2,
+          "dw": 3,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 106,
+          "dw": 67,
+          "trainee": 16
+        }
+      },
+      "10": {
+        "awal": {
+          "staff": 106,
+          "dw": 69,
+          "trainee": 16
+        },
+        "leaver": {
+          "staff": 5,
+          "dw": 5,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 5,
+          "dw": 3,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 108,
+          "dw": 67,
+          "trainee": 18
+        }
+      },
+      "11": {
+        "awal": {
+          "staff": 108,
+          "dw": 67,
+          "trainee": 18
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 5,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 5,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 107,
+          "dw": 65,
+          "trainee": 21
+        }
+      },
+      "12": {
+        "awal": {
+          "staff": 107,
+          "dw": 65,
+          "trainee": 21
+        },
+        "leaver": {
+          "staff": 5,
+          "dw": 2,
+          "trainee": 4
+        },
+        "voluntary": {
+          "staff": 5,
+          "dw": 2,
+          "trainee": 4
+        },
+        "akhir": {
+          "staff": 103,
+          "dw": 63,
+          "trainee": 17
+        }
+      }
+    },
+    "2022": {
+      "1": {
+        "awal": {
+          "staff": 103,
+          "dw": 63,
+          "trainee": 17
+        },
+        "leaver": {
+          "staff": 4,
+          "dw": 1,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 4,
+          "dw": 1,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 109,
+          "dw": 67,
+          "trainee": 17
+        }
+      },
+      "2": {
+        "awal": {
+          "staff": 109,
+          "dw": 67,
+          "trainee": 17
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 3,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 3,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 108,
+          "dw": 65,
+          "trainee": 20
+        }
+      },
+      "3": {
+        "awal": {
+          "staff": 108,
+          "dw": 66,
+          "trainee": 20
+        },
+        "leaver": {
+          "staff": 7,
+          "dw": 4,
+          "trainee": 3
+        },
+        "voluntary": {
+          "staff": 6,
+          "dw": 2,
+          "trainee": 3
+        },
+        "akhir": {
+          "staff": 104,
+          "dw": 64,
+          "trainee": 18
+        }
+      },
+      "4": {
+        "awal": {
+          "staff": 104,
+          "dw": 64,
+          "trainee": 18
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 3,
+          "trainee": 2
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 3,
+          "trainee": 2
+        },
+        "akhir": {
+          "staff": 106,
+          "dw": 65,
+          "trainee": 19
+        }
+      },
+      "5": {
+        "awal": {
+          "staff": 106,
+          "dw": 65,
+          "trainee": 19
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 105,
+          "dw": 65,
+          "trainee": 19
+        }
+      },
+      "6": {
+        "awal": {
+          "staff": 105,
+          "dw": 65,
+          "trainee": 19
+        },
+        "leaver": {
+          "staff": 3,
+          "dw": 1,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 3,
+          "dw": 1,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 103,
+          "dw": 66,
+          "trainee": 19
+        }
+      },
+      "7": {
+        "awal": {
+          "staff": 103,
+          "dw": 66,
+          "trainee": 19
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 107,
+          "dw": 70,
+          "trainee": 22
+        }
+      }
+    }
+  },
+  "outlet 2": {
+    "2021": {
+      "4": {
+        "awal": {
+          "staff": 117,
+          "dw": 81,
+          "trainee": 33
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 8,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 8,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 116,
+          "dw": 73,
+          "trainee": 42
+        }
+      },
+      "5": {
+        "awal": {
+          "staff": 116,
+          "dw": 73,
+          "trainee": 42
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 2,
+          "dw": 0,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 114,
+          "dw": 73,
+          "trainee": 42
+        }
+      },
+      "6": {
+        "awal": {
+          "staff": 114,
+          "dw": 73,
+          "trainee": 42
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 0,
+          "trainee": 2
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 0,
+          "trainee": 2
+        },
+        "akhir": {
+          "staff": 113,
+          "dw": 73,
+          "trainee": 40
+        }
+      },
+      "7": {
+        "awal": {
+          "staff": 113,
+          "dw": 73,
+          "trainee": 40
+        },
+        "leaver": {
+          "staff": 7,
+          "dw": 9,
+          "trainee": 4
+        },
+        "voluntary": {
+          "staff": 5,
+          "dw": 8,
+          "trainee": 4
+        },
+        "akhir": {
+          "staff": 106,
+          "dw": 64,
+          "trainee": 36
+        }
+      },
+      "8": {
+        "awal": {
+          "staff": 106,
+          "dw": 64,
+          "trainee": 36
+        },
+        "leaver": {
+          "staff": 8,
+          "dw": 4,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 8,
+          "dw": 4,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 98,
+          "dw": 61,
+          "trainee": 35
+        }
+      },
+      "9": {
+        "awal": {
+          "staff": 98,
+          "dw": 61,
+          "trainee": 35
+        },
+        "leaver": {
+          "staff": 9,
+          "dw": 0,
+          "trainee": 3
+        },
+        "voluntary": {
+          "staff": 7,
+          "dw": 0,
+          "trainee": 3
+        },
+        "akhir": {
+          "staff": 89,
+          "dw": 62,
+          "trainee": 32
+        }
+      },
+      "10": {
+        "awal": {
+          "staff": 89,
+          "dw": 62,
+          "trainee": 32
+        },
+        "leaver": {
+          "staff": 4,
+          "dw": 0,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 3,
+          "dw": 0,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 85,
+          "dw": 63,
+          "trainee": 33
+        }
+      },
+      "11": {
+        "awal": {
+          "staff": 85,
+          "dw": 63,
+          "trainee": 33
+        },
+        "leaver": {
+          "staff": 14,
+          "dw": 0,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 14,
+          "dw": 0,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 74,
+          "dw": 63,
+          "trainee": 33
+        }
+      },
+      "12": {
+        "awal": {
+          "staff": 74,
+          "dw": 63,
+          "trainee": 33
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 1,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 1,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 73,
+          "dw": 62,
+          "trainee": 33
+        }
+      }
+    },
+    "2022": {
+      "1": {
+        "awal": {
+          "staff": 73,
+          "dw": 62,
+          "trainee": 33
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 2,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 2,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 75,
+          "dw": 64,
+          "trainee": 35
+        }
+      },
+      "2": {
+        "awal": {
+          "staff": 75,
+          "dw": 64,
+          "trainee": 35
+        },
+        "leaver": {
+          "staff": 2,
+          "dw": 1,
+          "trainee": 3
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 0,
+          "trainee": 3
+        },
+        "akhir": {
+          "staff": 71,
+          "dw": 64,
+          "trainee": 32
+        }
+      },
+      "3": {
+        "awal": {
+          "staff": 71,
+          "dw": 64,
+          "trainee": 32
+        },
+        "leaver": {
+          "staff": 4,
+          "dw": 2,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 4,
+          "dw": 2,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 72,
+          "dw": 64,
+          "trainee": 32
+        }
+      },
+      "4": {
+        "awal": {
+          "staff": 72,
+          "dw": 64,
+          "trainee": 32
+        },
+        "leaver": {
+          "staff": 3,
+          "dw": 1,
+          "trainee": 0
+        },
+        "voluntary": {
+          "staff": 3,
+          "dw": 1,
+          "trainee": 0
+        },
+        "akhir": {
+          "staff": 72,
+          "dw": 65,
+          "trainee": 34
+        }
+      },
+      "5": {
+        "awal": {
+          "staff": 72,
+          "dw": 65,
+          "trainee": 34
+        },
+        "leaver": {
+          "staff": 1,
+          "dw": 0,
+          "trainee": 2
+        },
+        "voluntary": {
+          "staff": 1,
+          "dw": 0,
+          "trainee": 2
+        },
+        "akhir": {
+          "staff": 71,
+          "dw": 65,
+          "trainee": 35
+        }
+      },
+      "6": {
+        "awal": {
+          "staff": 71,
+          "dw": 65,
+          "trainee": 35
+        },
+        "leaver": {
+          "staff": 4,
+          "dw": 3,
+          "trainee": 1
+        },
+        "voluntary": {
+          "staff": 4,
+          "dw": 3,
+          "trainee": 1
+        },
+        "akhir": {
+          "staff": 72,
+          "dw": 68,
+          "trainee": 36
+        }
+      },
+      "7": {
+        "awal": {
+          "staff": 72,
+          "dw": 68,
+          "trainee": 36
+        },
+        "leaver": {
+          "staff": 3,
+          "dw": 2,
+          "trainee": 5
+        },
+        "voluntary": {
+          "staff": 2,
+          "dw": 1,
+          "trainee": 5
+        },
+        "akhir": {
+          "staff": 71,
+          "dw": 66,
+          "trainee": 36
+        }
+      }
+    }
+  }
+}

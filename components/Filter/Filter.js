@@ -1,79 +1,105 @@
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
+import { Button, Skeleton, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import {doc, getDoc} from "firebase/firestore"
-import { db } from "../../lib/firebase"
-import { useFilter } from "../../contexts/FilterContext";
+import { defaultFilterValue, useFilter } from "../../contexts/FilterContext";
 import MonthRange from "./MonthRange";
 import FilterCore from "./FilterCore";
+import { useData } from "../../contexts/DataContext";
+import dayjs from "dayjs";
 
-export default function Filter({ filterProps }) {
+const allDataType = [
+  "Jumlah Karyawan",
+  "Leaver",
+  "Voluntary Leaver",
+  "Involuntary Leaver",
+  "Turnover Rate",
+];
+
+export default function Filter() {
+  const { setFilter, Filter} = useFilter();
+  const {dataGroup:{Data, OutletNames}, dataLoading } = useData()
   // outlet
   const [allOutletNames, setAllOutletNames] = useState([]);
   const [outletNames, setOutletNames] = useState([]);
-
-  // employee type 
-  const allEmployeeTypes = ["Staff", "Dw", "Training"];
-  const [employeeTypes, setEmployeeTypes] = useState([
-  "Staff",
-    "Dw",
-    "Training",
-  ]);
-
   // date
-  const [start, setStart] = useState(null);
-  const [end, setEnd] = useState(null);
-  const {setFilter, filter} = useFilter();
+  const [start, setStart] = useState(dayjs("01/" + dayjs().year().toString(), "MM/YYYY"));
+  const [end, setEnd] = useState(dayjs());
+  const [dataType, setDataType] = useState(Filter.dataType);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getData = async () => {
-      const q = await getDoc(doc(db, "metadata", "information"))
-      if(q.exists) {
-        setOutletNames(["SMG"])
-        setAllOutletNames(q.data().outlet_names);
-      }
+    if (!dataLoading) {
+      setAllOutletNames(OutletNames);
+      setOutletNames(OutletNames.find(v => v == "SMG") ? "SMG" : [OutletNames[0]])
+      setLoading(false);
     }
-    getData();
-  }, [])
+  }, [dataLoading, OutletNames]);
 
   const submitFilter = () => {
-    if(outletNames.length != 0 && employeeTypes.length != 0 && start && end) {
+    if (outletNames.length != 0 && start && end) {
       setFilter({
         outletNames,
-        employeeTypes,
         startMonth: start.month(),
         startYear: start.year(),
         endMonth: end.month(),
-        endYear: end.year()
-      })
-      console.log(filter)
+        endYear: end.year(),
+        dataType,
+      });
     } else {
-      alert("Semua parameter harus terisi")
+      alert("Semua parameter harus terisi");
     }
-  }
+  };
 
   return (
-    <Box sx={{display: 'flex', flexDirection: 'row', gap: '1em', alignItems:'flex-start'}}>
-      <MonthRange 
-        start={start}
-        setStart={setStart}
-        end={end}
-        setEnd={setEnd}
-      />
-      <FilterCore
-        selected={employeeTypes}
-        setSelected={setEmployeeTypes}
-        possibleValues={allEmployeeTypes}
-        label="Tipe Karyawan"
-      />
-      <FilterCore 
-        possibleValues={allOutletNames}
-        selected={outletNames}
-        setSelected={setOutletNames}
-        label="Outlet"
-        width={300}
-      />
-      <Button onClick={submitFilter} variant="contained">Filter</Button>
-    </Box>
+    <Stack
+      component="aside"
+      spacing={2}
+      sx={{
+        width: 425,
+        border: "1px solid #D3D3D3",
+        borderRadius: "5px",
+        padding: "1em",
+      }}
+    >
+      <Typography variant="h5">Filter</Typography>
+
+      {loading ? (
+        <Skeleton />
+      ) : (
+        <>
+          {/* monthRange */}
+          <MonthRange
+            start={start}
+            setStart={setStart}
+            end={end}
+            setEnd={setEnd}
+          />
+          {/* outletNames */}
+          <FilterCore
+            possibleValues={allOutletNames}
+            selected={outletNames}
+            setSelected={setOutletNames}
+            label="Outlet"
+          />
+          {/* dataType & button */}
+          <Stack direction="row" spacing={2}>
+            <FilterCore
+              selected={dataType}
+              setSelected={setDataType}
+              possibleValues={allDataType}
+              label="data"
+              multiple={false}
+            />
+            <Button
+              onClick={submitFilter}
+              sx={{ width: 200 }}
+              variant="contained"
+            >
+              Apply
+            </Button>
+          </Stack>
+        </>
+      )}
+    </Stack>
   );
 }
