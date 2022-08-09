@@ -56,18 +56,20 @@ export default function Filter() {
 
   return (
     <Stack
-    my={2}
+      my={2}
       component="aside"
       spacing={2}
       sx={{
         width: 425,
         borderRadius: "16px",
         padding: "1em",
-        backgroundColor:'white',
-        boxShadow:"3px 3px 12px 2px rgba(0,0,0,0.07)"
+        backgroundColor: "white",
+        boxShadow: "3px 3px 12px 2px rgba(0,0,0,0.07)",
       }}
     >
-      <Typography variant="h5">Filter</Typography>
+      <Typography variant="h5" fontWeight={500}>
+        Filter
+      </Typography>
 
       {loading ? (
         <Skeleton />
@@ -88,7 +90,7 @@ export default function Filter() {
             label="Outlet"
           />
           {/* dataType & button */}
-          <Stack direction="row" justifyContent="flex-end" spacing={2} >
+          <Stack direction="row" justifyContent="flex-end" spacing={2}>
             <FilterCore
               selected={dataType}
               setSelected={setDataType}
@@ -97,10 +99,7 @@ export default function Filter() {
               multiple={false}
               width="80%"
             />
-            <Button
-              onClick={submitFilter}
-              variant="contained"
-            >
+            <Button onClick={submitFilter} variant="contained">
               Apply
             </Button>
           </Stack>

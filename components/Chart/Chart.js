@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import {
   LineChart,
   CartesianGrid,
@@ -26,28 +26,26 @@ function Chart() {
     if (dataLoading || !isFilterReady) {
       return;
     }
-    if (Filter.dataType == "Turnover Rate") {
-      setFilterUnit("%");
-    } else {
-      setFilterUnit("");
-    }
+    setFilterUnit(Filter.dataType == "Turnover Rate" ? "%" : "");
     const { Data } = dataGroup;
+
     const mainOutput = [];
     const staffOutput = [];
     const dwOutput = [];
     const traineeOutput = [];
+
     const years = [];
-    for (
-      let workingYear = Filter.startYear;
-      workingYear <= Filter.endYear;
-      workingYear++
-    ) {
-      years.push(workingYear);
+    for (let y = Filter.startYear; y <= Filter.endYear; y++) {
+      years.push(y);
     }
+
     years.forEach((year) => {
+
       const startMonth = year == Filter.startYear ? Filter.startMonth : 1;
       const endMonth = year == Filter.endYear ? Filter.endMonth : 12;
+
       for (let month = startMonth; month <= endMonth; month++) {
+
         const monthProp = dayjs(`${month}/${year}`, "M/YYYY").format("MM/YY");
         const monthlyStaff = { month: monthProp };
         const monthlyDw = { month: monthProp };
@@ -55,13 +53,15 @@ function Chart() {
         const monthlyAll = { month: monthProp };
 
         Filter.outletNames.forEach((outletName) => {
+
           let staff;
           let dw;
           let trainee;
-          console.log({ outletName, year, month });
+
           if (!(Data[outletName][year] && Data[outletName][year][month])) {
             return;
           }
+          
           const scope = Data[outletName][year][month];
           switch (Filter.dataType) {
             case "Jumlah Karyawan":
@@ -80,30 +80,48 @@ function Chart() {
               trainee = scope?.voluntary?.trainee;
               break;
             case "Involuntary Leaver":
-              if (scope?.leaver?.staff && scope?.voluntary?.staff) {
+              if (
+                scope?.leaver?.staff != undefined &&
+                scope?.voluntary?.staff != undefined
+              ) {
                 staff = scope.leaver.staff - scope.voluntary.staff;
               }
-              if (scope?.leaver?.dw && scope?.voluntary?.dw) {
+              if (
+                scope?.leaver?.dw != undefined &&
+                scope?.voluntary?.dw != undefined
+              ) {
                 dw = scope.leaver.dw - scope.voluntary.dw;
               }
-              if (scope?.leaver?.trainee && scope?.voluntary?.trainee) {
+              if (
+                scope?.leaver?.trainee != undefined &&
+                scope?.voluntary?.trainee != undefined
+              ) {
                 trainee = scope.leaver.trainee - scope.voluntary.trainee;
               }
               break;
             case "Turnover Rate":
-              if (scope?.leaver?.staff && scope?.akhir?.staff) {
+              if (
+                scope?.leaver?.staff != undefined &&
+                scope?.akhir?.staff != undefined
+              ) {
                 staff = Number(
                   ((scope?.leaver?.staff / scope?.akhir?.staff) * 100).toFixed(
                     2
                   )
                 );
               }
-              if (scope?.leaver?.dw && scope?.akhir?.dw) {
+              if (
+                scope?.leaver?.dw != undefined &&
+                scope?.akhir?.dw != undefined
+              ) {
                 dw = Number(
                   ((scope?.leaver?.dw / scope?.akhir?.dw) * 100).toFixed(2)
                 );
               }
-              if (scope?.leaver?.trainee && scope?.akhir?.trainee) {
+              if (
+                scope?.leaver?.trainee != undefined &&
+                scope?.akhir?.trainee != undefined
+              ) {
                 trainee = Number(
                   (
                     (scope?.leaver?.trainee / scope?.akhir?.trainee) *
@@ -114,19 +132,23 @@ function Chart() {
             default:
               break;
           }
-          if (staff) {
+          if (typeof staff == "number") {
             monthlyStaff[outletName] = staff;
           }
 
-          if (dw) {
+          if (typeof dw == "number") {
             monthlyDw[outletName] = dw;
           }
 
-          if (trainee) {
+          if (typeof trainee == "number") {
             monthlyTrainee[outletName] = trainee;
           }
 
-          if (staff || dw || trainee) {
+          if (
+            typeof staff == "number" ||
+            typeof dw == "number" ||
+            typeof trainee == "number"
+          ) {
             monthlyAll[outletName] = (staff ?? 0) + (dw ?? 0) + (trainee ?? 0);
           }
         });
@@ -141,7 +163,7 @@ function Chart() {
   }, [dataLoading, isFilterReady, Filter, dataGroup]);
 
   return (
-    <Box>
+    <Box sx={{ display: "flex", gap: "1em", flexDirection: "column" }}>
       <ChartCore
         title="Semua Karyawan"
         data={chartData?.mainOutput}
@@ -191,48 +213,73 @@ const COLORS = [
 // box-shadow: 4px 4px 19px 4px rgba(0,0,0,0.25);
 
 function ChartCore({ data, yKeys, title, unit }) {
-  return (
-    data && (
-      <Box
-        my={2}
-        sx={{
-          borderRadius: "16px",
-          backgroundColor: "white",
-          boxShadow: "3px 3px 12px 2px rgba(0,0,0,0.07)",
-        }}
-        pr={3}
-        pt={2}
-        pb={2}
+  return data ? (
+    <Box
+      my={2}
+      sx={{
+        borderRadius: "16px",
+        backgroundColor: "white",
+        boxShadow: "3px 3px 12px 2px rgba(0,0,0,0.07)",
+      }}
+      pr={3}
+      pt={2}
+      pb={2}
+    >
+      <Typography
+        variant="h6"
+        component="h2"
+        fontWeight={500}
+        px="2em"
+        pb="0.5em"
       >
-        <Typography variant="h6" component="h2" fontWeight={400} px="2em">
-          {title}
-        </Typography>
-        <LineChart width={750} height={250} data={data}>
-          <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.8} />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {yKeys.map((key) => (
-            <Line
-              key={key}
-              unit={unit}
-              type="monotone"
-              dataKey={key}
-              stroke={COLORS[Math.floor(Math.random() * 14)]}
-              animationEasing="ease-out"
-              strokeWidth={1}
-            />
-          ))}
-          <Brush
-            dataKey="month"
-            startIndex={0}
-            endIndex={data.length > 12 ? 11 : data.length - 1}
-            height={24}
+        {title}
+      </Typography>
+      <LineChart width={750} height={250} data={data}>
+        <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.8} />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        {yKeys.map((key) => (
+          <Line
+            key={key}
+            unit={unit}
+            type="monotone"
+            dataKey={key}
+            stroke={COLORS[Math.floor(Math.random() * 14)]}
+            animationEasing="ease-out"
+            strokeWidth={1}
           />
-        </LineChart>
-      </Box>
-    )
+        ))}
+        <Brush
+          dataKey="month"
+          startIndex={0}
+          endIndex={data.length > 12 ? 11 : data.length - 1}
+          height={24}
+        />
+      </LineChart>
+    </Box>
+  ) : (
+    <Box
+      my={2}
+      sx={{
+        borderRadius: "16px",
+        backgroundColor: "white",
+        boxShadow: "3px 3px 12px 2px rgba(0,0,0,0.07)",
+      }}
+      p={2}
+    >
+      <Typography
+        variant="h6"
+        component="h2"
+        fontWeight={400}
+        px="2em"
+        py="1em"
+      >
+        <Skeleton />
+      </Typography>
+      <Skeleton height={200} width={700} variant="rectangular" />
+    </Box>
   );
 }
 export default Chart;

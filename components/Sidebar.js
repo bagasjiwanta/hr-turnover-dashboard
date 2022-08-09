@@ -10,8 +10,22 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "@mui/material/Toolbar";
-
+import Link from "next/link"
 export const SIDEBAR_WIDTH = 220;
+
+const LINKS = [{
+  link: "/",
+  name: "Overview"
+}, {
+  link: "/edit",
+  name:"Edit"
+}, {
+  link: "/login",
+  name: "Login"
+}, {
+  link: "/users",
+  name: "Users"
+}]
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -26,14 +40,16 @@ function ResponsiveDrawer(props) {
       <Toolbar />
       <Divider />
       <List>
-        {["Overview", "Editor", "Login"].map((text, index) => (
-          <ListItem key={text} dense>
+        {LINKS.map((text, index) => (
+          <ListItem key={text.link} dense>
+            <Link href={text.link}>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text.name} />
             </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>

@@ -13,6 +13,9 @@ import SideBar from "../components/Sidebar";
 import TopBar from "../components/TopBar";
 import { DataProvider } from "../contexts/DataContext";
 import { FilterProvider } from "../contexts/FilterContext";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 function MyApp({ Component, pageProps }) {
   return (
