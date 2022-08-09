@@ -14,7 +14,7 @@ const DataContext = createContext({
     OutletNames: [],
     /** @type{import("../utils/types").company} */
     Data: {},
-  }, 
+  },
   dataError: null,
   dataLoading: true,
   setData: (state) => {},
@@ -28,31 +28,46 @@ function DataProvider({ children }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => onSnapshot(collection(db, "outlets"), snapshot => {
-    setLoading(true);
-    const outletNames = [];
-    const data = {};
-    snapshot.forEach(outlet => {
-      data[outlet.id] = outlet.data()
-      outletNames.push(outlet.id)
-    })
-    setData({
-      Data: data,
-      OutletNames: outletNames
-    })
-    setLoading(false);
-  }, error => {
-    setLoading(true);
-    setError({
-      name: error.name,
-      code: error.code,
-      message: error.message
-    })
-    setLoading(false);
-  }), [])
+  useEffect(
+    () =>
+      onSnapshot(
+        collection(db, "outlets"),
+        (snapshot) => {
+          setLoading(true);
+          const outletNames = [];
+          const data = {};
+          snapshot.forEach((outlet) => {
+            data[outlet.id] = outlet.data();
+            outletNames.push(outlet.id);
+          });
+          setData({
+            Data: data,
+            OutletNames: outletNames,
+          });
+          setLoading(false);
+        },
+        (error) => {
+          setLoading(true);
+          setError({
+            name: error.name,
+            code: error.code,
+            message: error.message,
+          });
+          setLoading(false);
+        }
+      ),
+    []
+  );
 
   return (
-    <DataContext.Provider value={{ dataGroup: data, setData, dataError: error, dataLoading: loading}}>
+    <DataContext.Provider
+      value={{
+        dataGroup: data,
+        setData,
+        dataError: error,
+        dataLoading: loading,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );

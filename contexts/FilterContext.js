@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { doc, getDoc } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../utils/firebase";
+import { useData } from "./DataContext";
 
 /** @type{import("../utils/types").Filter} */
 const defaultFilterValue = {
@@ -16,7 +17,7 @@ const defaultFilterValue = {
 const FilterContext = createContext({
   Filter: defaultFilterValue,
   setFilter: (newFilter) => {},
-  isReady: false,
+  isFilterReady: false,
 });
 
 function useFilter() {
@@ -25,31 +26,26 @@ function useFilter() {
 
 function FilterProvider({ children }) {
   const [filter, setFilter] = useState(defaultFilterValue);
-  const [isReady, setIsReady] = useState(false);
+  const {
+    dataGroup: { OutletNames },
+    dataLoading,
+  } = useData();
+  const [isFilterReady, setIsFilterReady] = useState(false);
   useEffect(() => {
-    const getData = async () => {
-      const q = await getDoc(doc(db, "metadata", "information"));
-      if (q.exists()) {
-        const { outlet_names } = q.data();
-        if (outlet_names.find((v) => v == "SMG")) {
-          setFilter({
-            ...defaultFilterValue,
-            outletNames: ["SMG"],
-          });
-        } else {
-          setFilter({
-            ...defaultFilterValue,
-            outletNames: [outlet_names.at(0)],
-          });
-        }
+    if (!dataLoading) {
+      setIsFilterReady(false);
+      if (OutletNames.find((v) => v == "SMG")) {
+        setFilter({ ...filter, outletNames: ["SMG"] });
+      } else {
+        setFilter({ ...filter, outletNames: [OutletNames[0]] });
       }
-      setIsReady(true);
-    };
-    getData();
-  }, []);
-
+      setIsFilterReady(true);
+    }
+  }, [dataLoading]);
   return (
-    <FilterContext.Provider value={{ Filter: filter, setFilter, isReady }}>
+    <FilterContext.Provider
+      value={{ Filter: filter, setFilter, isFilterReady }}
+    >
       {children}
     </FilterContext.Provider>
   );

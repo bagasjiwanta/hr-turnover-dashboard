@@ -15,25 +15,29 @@ const allDataType = [
 ];
 
 export default function Filter() {
-  const { setFilter, Filter} = useFilter();
-  const {dataGroup:{Data, OutletNames}, dataLoading } = useData()
-  // outlet
+  const { setFilter, Filter, isFilterReady } = useFilter();
+  const {
+    dataGroup: { Data, OutletNames },
+    dataLoading,
+  } = useData();
   const [allOutletNames, setAllOutletNames] = useState([]);
   const [outletNames, setOutletNames] = useState([]);
-  // date
-  const [start, setStart] = useState(dayjs("01/" + dayjs().year().toString(), "MM/YYYY"));
+  const [start, setStart] = useState(
+    dayjs("01/" + dayjs().year().toString(), "MM/YYYY")
+  );
   const [end, setEnd] = useState(dayjs());
   const [dataType, setDataType] = useState(Filter.dataType);
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!dataLoading) {
+    if (isFilterReady) {
+      setLoading(true);
       setAllOutletNames(OutletNames);
-      setOutletNames(OutletNames.find(v => v == "SMG") ? "SMG" : [OutletNames[0]])
+      setOutletNames(Filter.outletNames);
       setLoading(false);
     }
-  }, [dataLoading, OutletNames]);
+  }, [OutletNames, isFilterReady, Filter.outletNames]);
 
   const submitFilter = () => {
     if (outletNames.length != 0 && start && end) {
